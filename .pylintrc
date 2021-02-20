@@ -4,6 +4,7 @@ disable=
     C0115,
     C0116,
     R0903,
-    C0415
+    C0415,
+    R0801
 ignore=
     source/apps/api/migrations

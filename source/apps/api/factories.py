@@ -6,7 +6,7 @@ class BasketFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Basket
 
-    total = 1
+    total = 0
 
 
 class ProductFactory(factory.django.DjangoModelFactory):
