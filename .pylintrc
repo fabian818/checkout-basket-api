@@ -5,6 +5,7 @@ disable=
     C0116,
     R0903,
     C0415,
-    R0801
+    R0801,
+    R0901, # too many ancestors needed for viewsets
 ignore=
     source/apps/api/migrations

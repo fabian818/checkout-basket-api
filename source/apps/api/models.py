@@ -13,7 +13,7 @@ class DateTable(models.Model):
 
 
 class Basket(DateTable):
-    total = models.DecimalField(max_digits=10, decimal_places=2, null=False)
+    total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
 
 
 class Product(DateTable):

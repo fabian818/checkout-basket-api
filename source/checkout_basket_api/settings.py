@@ -34,7 +34,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.messages',
-    'django.contrib.staticfiles',
+    'django.contrib.contenttypes',
+    'django.contrib.auth',
     'apps.api'
 ]
 
@@ -65,6 +66,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'checkout_basket_api.wsgi.application'
+
+REST_FRAMEWORK = {
+    'COERCE_DECIMAL_TO_STRING': False
+}
 
 
 # Database

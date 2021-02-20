@@ -1,26 +1,24 @@
-from django.test import TestCase
+from rest_framework.test import APITestCase
 from rest_framework import status
 from ..models import Basket, Association
 from ..factories import BasketFactory, ProductFactory, AssociationFactory
 
 BASE_LIST_PATH = '/api/baskets/'
-BASE_DETAIL_PATH = '/api/baskets/{}'
+BASE_DETAIL_PATH = '/api/baskets/{}/'
 
 
-class CreateBasketTest(TestCase):
+class CreateBasketTest(APITestCase):
     """ Test module for POST to create baskets API """
     def test_create_baskets(self):
-        client = self.client
-        response = client.post(
-                BASE_LIST_PATH,
-                content_type="application/json")
+        response = self.client.post(
+                BASE_LIST_PATH)
         baskets_count = Basket.objects.all().count()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(baskets_count, 1)
 
 
 
-class GetSingleBasketTest(TestCase):
+class GetSingleBasketTest(APITestCase):
     """ Test module for GET to retrieve single basket API """
 
     def setUp(self):
@@ -32,10 +30,10 @@ class GetSingleBasketTest(TestCase):
                 BASE_DETAIL_PATH.format(self.basket.id))
         basket = Basket.objects.get(id=self.basket.id)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(basket.amount, response.json()['amount'])
+        self.assertEqual(float(basket.total), response.json()['total'])
 
 
-class DeleteSingleBasketTest(TestCase):
+class DeleteSingleBasketTest(APITestCase):
     """ Test module for DELETE to remove single basket API """
 
     def setUp(self):
