@@ -1,5 +1,5 @@
 import factory
-from ..models import Basket, Product, Association
+from .models import Basket, Product, Association
 
 
 class BasketFactory(factory.django.DjangoModelFactory):
