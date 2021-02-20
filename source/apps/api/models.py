@@ -29,6 +29,6 @@ class Product(DateTable):
 
 
 class Association(DateTable):
-    basket = models.foreignkey(Basket, on_delete=models.cascade, null=False)
-    product = models.foreignkey(Product, on_delete=models.cascade, null=False)
+    basket = models.ForeignKey(Basket, on_delete=models.CASCADE, null=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=False)
     quantity = models.IntegerField(null=False, default=1)
