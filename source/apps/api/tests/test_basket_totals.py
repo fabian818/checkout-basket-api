@@ -95,12 +95,12 @@ class AddProductToBasketTestTotalAmount(TestCase):
         client = self.client
         for associations_pair in ASSOCIATION_PAIRS:
             basket = BasketFactory()
-            associations_pair['basket_id'] = basket.id
             for association in associations_pair['associations']:
+                association['basket_id'] = basket.id
                 response = client.post(
                         BASE_LIST_PATH,
                         dumps(association),
                         content_type="application/json")
             basket.refresh_from_db()
             self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-            self.assertEqual(basket.amount, associations_pair['total'])
+            self.assertEqual(basket.total, associations_pair['total'])

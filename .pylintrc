@@ -5,6 +5,11 @@ disable=
     C0116,
     R0903,
     C0415,
-    R0801
+    R0801,
+    R0901, # too many ancestors needed for viewsets
+    E0401, # import error
+    W0613, # unused arguments
 ignore=
     source/apps/api/migrations
+ignore-patterns=
+    apps.py

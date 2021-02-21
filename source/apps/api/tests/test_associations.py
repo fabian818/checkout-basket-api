@@ -1,10 +1,9 @@
 from json import dumps
-from django.test import TestCase
+from rest_framework.test import APITestCase
 from rest_framework import status
 from ..factories import BasketFactory, ProductFactory
 
 BASE_LIST_PATH = '/api/associations/'
-BASE_DETAIL_PATH = '/api/associations/{}'
 
 ASSOCIATION_PAYLOAD = {
     'basket_id': None,
@@ -13,7 +12,7 @@ ASSOCIATION_PAYLOAD = {
 }
 
 
-class AddProductToBasketTest(TestCase):
+class AddProductToBasketTest(APITestCase):
     """ Test module for POST to create baskets API """
 
     def setUp(self):
@@ -23,13 +22,12 @@ class AddProductToBasketTest(TestCase):
         self.basket = BasketFactory()
 
     def test_create_association(self):
-        client = self.client
         associations_payload = ASSOCIATION_PAYLOAD.copy()
         associations_payload['basket_id'] = self.basket.id
-        response = client.post(
+        response = self.client.post(
                 BASE_LIST_PATH,
                 dumps(associations_payload),
                 content_type="application/json")
         self.basket.refresh_from_db()
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(self.basket.amount, 5)
+        self.assertEqual(self.basket.total, 5)
