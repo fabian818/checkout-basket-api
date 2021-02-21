@@ -1,5 +1,7 @@
 from django.apps import AppConfig
 
-
 class ApiConfig(AppConfig):
-    name = 'api'
+    name = 'apps.api'
+
+    def ready(self):
+        import apps.api.signals
