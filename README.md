@@ -80,5 +80,3 @@ Change the env var SENTRY_DSN to enable monitoring.
 ## Authors
 
 * **Fabian Peña** - *Initial work* - [fabian818](https://github.com/fabian818)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
