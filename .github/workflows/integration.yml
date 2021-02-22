@@ -16,4 +16,4 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: fabian818/checkout-basket-api
-          tags: latest, "$GITHUB_SHA"
+          tag_with_sha: true
