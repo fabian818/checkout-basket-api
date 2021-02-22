@@ -16,9 +16,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
 
 class AssociationSerializer(serializers.ModelSerializer):
-    product__code = serializers.CharField(write_only=True)
-    basket = BasketSerializer(read_only=True)
-    product = ProductSerializer(read_only=True)
+    product__code = serializers.CharField(write_only=True, required=True)
     product_id = serializers.IntegerField(read_only=True)
     basket_id = serializers.IntegerField()
 
@@ -30,4 +28,4 @@ class AssociationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Association
-        fields = '__all__'
+        exclude = ('product', 'basket')
