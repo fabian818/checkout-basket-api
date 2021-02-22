@@ -66,6 +66,12 @@ Alternatively you can just run:
 docker-compose -f docker-compose.test.yml up --exit-code-from api --build
 ```
 
+## Monitoring
+
+Using Sentry to monitor the application.
+
+Change the env var SENTRY_DSN to enable monitoring.
+
 ## Built With
 
 * [Django](https://www.djangoproject.com/) - The web framework used
