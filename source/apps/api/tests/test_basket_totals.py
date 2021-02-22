@@ -84,7 +84,7 @@ ASSOCIATION_PAIRS = [
 
 
 class AddProductToBasketTestTotalAmount(TestCase):
-    """ Test module for POST to create baskets API """
+    """ Test module for POST to create associations API """
 
     def setUp(self):
         ProductFactory(code='PEN', price=5)
